@@ -1,48 +1,30 @@
 import React from 'react';
-import HomeIcon from '@material-ui/icons/Home';
-import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
-import YouTube from '@material-ui/icons/YouTube';
-import SignOut from '@material-ui/icons/Settings';
-
-
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import WatchLaterRoundedIcon from '@material-ui/icons/WatchLaterRounded';
+import SubscriptionsRoundedIcon from '@material-ui/icons/SubscriptionsRounded';
+import FeaturedPlayListRoundedIcon from '@material-ui/icons/FeaturedPlayListRounded';
+import PlaylistPlayRoundedIcon from '@material-ui/icons/PlaylistPlayRounded';
 import {
   Sidebar,
   SidebarItem,
   SidebarDivider,
   SidebarSpace,
   SidebarUserSettings,
-  SidebarThemeToggle,
   SidebarPinButton,
 } from '@backstage/core';
 
 export const AppSidebar = () => (
   <Sidebar>
     <SidebarDivider />
-    {/* Global nav, not org-specific */}
-    <SidebarItem icon={HomeIcon} to="" text="Home" />
-    {/* <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-    <SidebarItem icon={CreateComponentIcon} to="welcome" text="Welcome" /> */}
-    <SidebarItem
-      icon={YouTube}
-      to="playlist_video"
-      text="Playlist Video"
-    />
-    <SidebarItem
-      icon={CreateComponentIcon}
-      to="watch_video"
-      text="Watch Video"
-    />
-
-    {/* End global nav */}
+    <SidebarItem icon={HomeRoundedIcon} to="" text="หน้าแรก" />
+    <SidebarItem icon={FeaturedPlayListRoundedIcon} to="" text="ใหม่" />
+    <SidebarItem icon={SubscriptionsRoundedIcon} to="" text="การติดตาม" />
+    <SidebarItem icon={PlaylistPlayRoundedIcon} to="" text="เพลย์ลิสต์" />
+    <SidebarItem icon={WatchLaterRoundedIcon} to="watch_video" text="ดูภายหลัง" />
     <SidebarDivider />
     <SidebarSpace />
     <SidebarDivider />
-    <SidebarItem
-      icon={SignOut}
-      to="sign_out"
-      text="Sign Out"
-    />
-    {/* <SidebarUserSettings  /> */}
+    {/* <SidebarUserSettings/> */}
     <SidebarPinButton />
   </Sidebar>
 );
