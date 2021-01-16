@@ -85,22 +85,22 @@ const WatchVideo: FC<{}> = () => {
   });
 
   const getUsers = async () => {
-    const res = await http.listUser({ limit: 10, offset: 0 });
+    const res = await http.listUser({ limit: 2, offset: 0 });
     setUsers(res);
   };
 
   const getPlaylist = async () => {
-    const res = await http.listPlaylist({ limit: 10, offset: 0 });
+    const res = await http.listPlaylist({ limit: 2, offset: 0 });
     setPlaylists(res);
   };
 
   const getVideo = async () => {
-    const res = await http.listVideo({ limit: 10, offset: 0 });
+    const res = await http.listVideo({ limit: 2, offset: 0 });
     setVideos(res);
   };
 
   const getResolution = async () => {
-    const res = await http.listResolution({ limit: 10, offset: 0 });
+    const res = await http.listResolution({ limit: 5, offset: 0 });
     setResolutions(res);
   };
 
