@@ -14,10 +14,10 @@ const AppRoutes = app.getRoutes();
 const App: FC<{}> = () => (
   <AppProvider>
     <AppRouter>
-      <SidebarPage>
-        <AppSidebar />
+      {/* <SidebarPage>
+        <AppSidebar /> */}
         <AppRoutes />
-      </SidebarPage>
+      {/* </SidebarPage> */}
     </AppRouter>
   </AppProvider>
 );

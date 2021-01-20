@@ -1,9 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Content, Header, Page, pageTheme } from '@backstage/core';
+import { Content, Header, Page, pageTheme, SidebarPage } from '@backstage/core';
 import SaveIcon from '@material-ui/icons/Save'; // icon save
 import Swal from 'sweetalert2'; // alert
 
+import { AppSidebar } from '../../../../../packages/app/src/sidebar';
 import {
   Container,
   Grid,
@@ -158,138 +159,141 @@ const WatchVideo: FC<{}> = () => {
   }
 
   return (
-    <Page theme={pageTheme.home}>
-      <Header style={HeaderCustom} title={`Watch Video`}>
-        <Avatar alt="Remy Sharp" src="../../image/account.jpg" />
-        <div style={{ marginLeft: 10 }}>Tanapon Kongjaroensuk</div>
-      </Header>
-      <Content>
-        <Container maxWidth="sm">
-          <Grid container spacing={3}>
-            <Grid item xs={12}></Grid>
-            <Grid item xs={3}>
-              <div className={classes.paper}>วีดีโอ</div>
-            </Grid>
-            <Grid item xs={9}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel>เลือกวีดีโอ</InputLabel>
-                <Select
-                  name="video"
-                  value={playlist_video.video || ''} // (undefined || '') = ''
-                  onChange={handleChange}
+    <SidebarPage>
+      <AppSidebar />
+      <Page theme={pageTheme.service}>
+        <Header style={HeaderCustom} title={`Watch Video`}>
+          <Avatar alt="Remy Sharp" src="../../image/account.jpg" />
+          <div style={{ marginLeft: 10 }}>Tanapon Kongjaroensuk</div>
+        </Header>
+        <Content>
+          <Container maxWidth="sm">
+            <Grid container spacing={3}>
+              <Grid item xs={12}></Grid>
+              <Grid item xs={3}>
+                <div className={classes.paper}>วีดีโอ</div>
+              </Grid>
+              <Grid item xs={9}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel>เลือกวีดีโอ</InputLabel>
+                  <Select
+                    name="video"
+                    value={playlist_video.video || ''} // (undefined || '') = ''
+                    onChange={handleChange}
+                  >
+                    {videos.map(item => {
+                      return (
+                        <MenuItem key={item.id} value={item.id}>
+                          {item.name}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={3}>
+                <div className={classes.paper}>เพลย์ลิสต์</div>
+              </Grid>
+              <Grid item xs={9}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel>เลือกเพลย์ลิสต์</InputLabel>
+                  <Select
+                    name="playlist"
+                    value={playlist_video.playlist || ''} // (undefined || '') = ''
+                    onChange={handleChange}
+                  >
+                    {playlists.map(item => {
+                      return (
+                        <MenuItem key={item.id} value={item.id}>
+                          {item.title}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={3}>
+                <div className={classes.paper}>ความละเอียด</div>
+              </Grid>
+              <Grid item xs={9}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel>เลือกความละเอียด</InputLabel>
+                  <Select
+                    name="resolution"
+                    value={playlist_video.resolution || ''} // (undefined || '') = ''
+                    onChange={handleChange}
+                  >
+                    {resolutions.map(item => {
+                      return (
+                        <MenuItem key={item.id} value={item.id}>
+                          {item.value}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={3}>
+                <div className={classes.paper}>สมาชิกระบบ</div>
+              </Grid>
+              <Grid item xs={9}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel>เลือกสมาชิกระบบ</InputLabel>
+                  <Select
+                    // value={playlist_video.create_by || ''} // (undefined || '') = ''
+                    // onChange={handleChange}
+                    name="create_by"
+                  >
+                    {users.map(item => {
+                      return (
+                        <MenuItem key={item.id} value={item.id}>
+                          {item.email}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={3}>
+                <div className={classes.paper}>เวลา</div>
+              </Grid>
+              <Grid item xs={9}>
+                <form className={classes.container} noValidate>
+                  <TextField
+                    label="เลือกเวลา"
+                    name="added"
+                    type="date"
+                    value={playlist_video.added || ''} // (undefined || '') = ''
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={handleChange}
+                  />
+                </form>
+              </Grid>
+
+              <Grid item xs={3}></Grid>
+              <Grid item xs={9}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  startIcon={<SaveIcon />}
+                  onClick={save}
                 >
-                  {videos.map(item => {
-                    return (
-                      <MenuItem key={item.id} value={item.id}>
-                        {item.name}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
+                  บันทึกการดู
+                </Button>
+              </Grid>
             </Grid>
-
-            <Grid item xs={3}>
-              <div className={classes.paper}>เพลย์ลิสต์</div>
-            </Grid>
-            <Grid item xs={9}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel>เลือกเพลย์ลิสต์</InputLabel>
-                <Select
-                  name="playlist"
-                  value={playlist_video.playlist || ''} // (undefined || '') = ''
-                  onChange={handleChange}
-                >
-                  {playlists.map(item => {
-                    return (
-                      <MenuItem key={item.id} value={item.id}>
-                        {item.title}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={3}>
-              <div className={classes.paper}>ความละเอียด</div>
-            </Grid>
-            <Grid item xs={9}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel>เลือกความละเอียด</InputLabel>
-                <Select
-                  name="resolution"
-                  value={playlist_video.resolution || ''} // (undefined || '') = ''
-                  onChange={handleChange}
-                >
-                  {resolutions.map(item => {
-                    return (
-                      <MenuItem key={item.id} value={item.id}>
-                        {item.value}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={3}>
-              <div className={classes.paper}>สมาชิกระบบ</div>
-            </Grid>
-            <Grid item xs={9}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel>เลือกสมาชิกระบบ</InputLabel>
-                <Select
-                  // value={playlist_video.create_by || ''} // (undefined || '') = ''
-                  // onChange={handleChange}
-                  name="create_by"
-                >
-                  {users.map(item => {
-                    return (
-                      <MenuItem key={item.id} value={item.id}>
-                        {item.email}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={3}>
-              <div className={classes.paper}>เวลา</div>
-            </Grid>
-            <Grid item xs={9}>
-              <form className={classes.container} noValidate>
-                <TextField
-                  label="เลือกเวลา"
-                  name="added"
-                  type="date"
-                  value={playlist_video.added || ''} // (undefined || '') = ''
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={handleChange}
-                />
-              </form>
-            </Grid>
-
-            <Grid item xs={3}></Grid>
-            <Grid item xs={9}>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                startIcon={<SaveIcon />}
-                onClick={save}
-              >
-                บันทึกการดู
-              </Button>
-            </Grid>
-          </Grid>
-        </Container>
-      </Content>
-    </Page>
+          </Container>
+        </Content>
+      </Page>
+    </SidebarPage>
   );
 };
 

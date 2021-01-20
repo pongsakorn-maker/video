@@ -1,30 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC ,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Swal from 'sweetalert2'; // alert
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -48,6 +33,41 @@ const useStyles = makeStyles(theme => ({
 
 const SignIn: FC<{}> = () => {
   const classes = useStyles();
+  const EmailhandleChange = (event: any) => {
+    setEmail(event.target.value as string);
+  };
+
+  const PasswordhandleChange = (event: any) => {
+    setPassword(event.target.value as string);
+  };
+  const [email, setEmail] = React.useState(String);
+  const [password, setPassword] = React.useState(String);
+
+  var status = false;
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: toast => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    },
+  });
+
+  function signin() {
+    console.log(email, password);
+    status = true;
+    window.location.href = '/recommendedvideo';
+    // if (status == false) {
+    //   Toast.fire({
+    //     icon: 'error',
+    //     title: 'username หรือ password ไม่ถูกต้อง',
+    //   });
+    // }
+    // status = false;
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -58,7 +78,7 @@ const SignIn: FC<{}> = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} >
           <TextField
             variant="outlined"
             margin="normal"
@@ -69,6 +89,8 @@ const SignIn: FC<{}> = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={EmailhandleChange}
           />
           <TextField
             variant="outlined"
@@ -80,10 +102,8 @@ const SignIn: FC<{}> = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            value={password}
+            onChange={PasswordhandleChange}
           />
           <Button
             type="submit"
@@ -91,6 +111,7 @@ const SignIn: FC<{}> = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={signin}
           >
             Sign In
           </Button>
@@ -101,16 +122,13 @@ const SignIn: FC<{}> = () => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href="/register" variant="body2">
+                {"Don't have an account? Sign Up!"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 };

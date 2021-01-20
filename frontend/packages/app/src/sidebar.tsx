@@ -9,22 +9,20 @@ import {
   SidebarItem,
   SidebarDivider,
   SidebarSpace,
-  SidebarUserSettings,
   SidebarPinButton,
 } from '@backstage/core';
 
 export const AppSidebar = () => (
   <Sidebar>
     <SidebarDivider />
-    <SidebarItem icon={HomeRoundedIcon} to="" text="หน้าแรก" />
-    <SidebarItem icon={FeaturedPlayListRoundedIcon} to="" text="ใหม่" />
-    <SidebarItem icon={SubscriptionsRoundedIcon} to="" text="การติดตาม" />
-    <SidebarItem icon={PlaylistPlayRoundedIcon} to="" text="เพลย์ลิสต์" />
-    <SidebarItem icon={WatchLaterRoundedIcon} to="watch_video" text="ดูภายหลัง" />
+    <SidebarItem icon={HomeRoundedIcon} to="/recommendedvideo" text="หน้าแรก" />
+    <SidebarItem icon={FeaturedPlayListRoundedIcon} to="/" text="ใหม่" />
+    <SidebarItem icon={SubscriptionsRoundedIcon} to="/" text="การติดตาม" />
+    <SidebarItem icon={PlaylistPlayRoundedIcon} to="/" text="เพลย์ลิสต์" />
+    <SidebarItem icon={WatchLaterRoundedIcon} to="/watch_video" text="ดูภายหลัง" />
     <SidebarDivider />
     <SidebarSpace />
     <SidebarDivider />
-    {/* <SidebarUserSettings/> */}
     <SidebarPinButton />
   </Sidebar>
 );
