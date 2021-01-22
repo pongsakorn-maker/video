@@ -7,7 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Swal from 'sweetalert2'; // alert
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -56,8 +58,8 @@ const Register: FC<{}> = () => {
 
   function register() {
     console.log(email, password);
-    status = true;
-    window.location.href = '/';
+    // status = true;
+    // window.location.href = '/';
     // if (status == false) {
     //   Toast.fire({
     //     icon: 'error',
@@ -71,10 +73,10 @@ const Register: FC<{}> = () => {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <AddCircleIcon/>
+          <LockOutlinedIcon/>
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register
+        Forgot Password
         </Typography>
         <form className={classes.form} >
           <TextField
@@ -113,6 +115,13 @@ const Register: FC<{}> = () => {
           >
             Submit
           </Button>
+          <Grid container>
+              <Grid item>
+                <Link href="/" variant="body2">
+                  {"Sign In"}
+                </Link>
+              </Grid>
+            </Grid>
         </form>
       </div>
     </Container>

@@ -1,58 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Backstage is an open platform for building developer portals"
-    />
-    <link rel="bookshelf" href="<%= publicPath %>/bookshelf.svg" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Backstage is an open platform for building developer portals" />
+  <link rel="bookshelf" href="<%= publicPath %>/bookshelf.svg" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link
-      rel="manifest"
-      href="<%= publicPath %>/manifest.json"
-      crossorigin="use-credentials"
-    />
-    <link rel="svg" href="<%= publicPath %>/bookshelf.svg" />
-    <link rel="shortcut icon" href="<%= publicPath %>/bookshelf.svg" />
-    <link
-      rel="bookshelf"
-      sizes="180x180"
-      href="<%= publicPath %>/bookshelf.svg"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="<%= publicPath %>/bookshelf.svg"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="<%= publicPath %>/bookshelf.svg"
-    />
-    <link
-      rel="mask-icon"
-      href="<%= publicPath %>/bookshelf.svg"
-      color="#5bbad5"
-    />
-    <style>
-      #root {
-        min-height: 100%;
-      }
-    </style>
-    <title><%= app.title %></title>
-  </head>
-  <body style="margin: 0;">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <link rel="manifest" href="<%= publicPath %>/manifest.json" crossorigin="use-credentials" />
+  <link rel="svg" href="<%= publicPath %>/bookshelf.svg" />
+  <link rel="shortcut icon" href="<%= publicPath %>/bookshelf.svg" />
+  <link rel="bookshelf" sizes="180x180" href="<%= publicPath %>/bookshelf.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= publicPath %>/bookshelf.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= publicPath %>/bookshelf.svg" />
+  <link rel="mask-icon" href="<%= publicPath %>/bookshelf.svg" color="#5bbad5" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <style>
+    #root {
+      min-height: 100%;
+    }
+  </style>
+  <title>
+    <%= app.title %>
+  </title>
+</head>
+
+<body style="margin: 0;">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -62,5 +43,9 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
