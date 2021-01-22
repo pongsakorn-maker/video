@@ -1,1 +1,2 @@
-# SE 63 Video System
+# 523480 COMPUTER ENGINEERING PROJECT 2/2563
+## B6005795 Pongsakorn Maprakhon
